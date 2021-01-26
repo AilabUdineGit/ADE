@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1_SMM4H_RUN_EXAMPLE_08.10.2020",
+        "split_folder": "smm4h19_task2",
+        "corpus": "SMM4H19_TASK2",
+        "notation": "IOB",
+        "model": "SPAN_BERT_CASED",
+        "architecture": "BERT_WRAPPER",
+        "train_mode": "VALIDATION",
+        "train_config": {
+            "max_patience": "5",
+            "learning_rate": "5e-5",
+            "dropout": "0.15",
+            "epochs": "80",
+            "epsilon": "1e-8",
+            "random_seed": "42"
+        },
+        "tidy_modes": [
+            "MERGE_OVERLAPS",
+            "SOLVE_DISCONTINUOUS"
+        ],
+        "goal": [
+            "ADR"
+        ]
+    }
+]

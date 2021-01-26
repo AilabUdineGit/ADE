@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1_CADEC_RUN_EXAMPLE_08.10.2020",
+        "split_folder": "cadec",
+        "corpus": "CADEC",
+        "notation": "IOB",
+        "model": "SPAN_BERT_CASED",
+        "architecture": "BERT_CRF",
+        "train_mode": "VALIDATION",
+        "train_config": {
+            "max_patience": "5",
+            "learning_rate": "5e-5",
+            "dropout": "0.15",
+            "epochs": "80",
+            "epsilon": "1e-8",
+            "random_seed": "42"
+        },
+        "tidy_modes": [
+            "MERGE_OVERLAPS",
+            "SOLVE_DISCONTINUOUS"
+        ],
+        "goal": [
+            "ADR"
+        ]
+    }
+]

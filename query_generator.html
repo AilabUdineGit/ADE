@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<title>ADE Detection - Query Generator</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Query Generator">
+		<meta name="keywords" content="ADE, Detection, Query, Generator">
+		<meta name="author" content="None">
+		<meta name="author" content="None">
+		<meta name="license" content="WTFPL v2">
+		<meta http-equiv="content-language" content="en">
+		<link rel="shortcut icon" href="documentation/assets/figures/drug-icon/favicon.ico">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+			  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+			  crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/fontawesome.min.css" 
+			  integrity="sha512-8jdwayz5n8F2cnW26l9vpV6+yGOcRAqz6HTu+DQ3FtVIAts2gTdlFZOGpYhvBMXkWEgxPN3Y22UWyZXuDowNLA==" 
+			  crossorigin="anonymous" />
+	</head>
+
+	<style>
+		body{
+			background-color: black;
+		}
+
+		article{
+			color: white;
+			text-align: center;
+			padding: 5%;
+		}
+
+		.dropdown-menu{
+			width: 100%
+		}
+
+		.dropdown-toggle{
+			width: 100%
+		}
+
+		.check-box{
+			text-align: left;
+			width: 50%
+		}
+
+		.centered-check-box{
+			text-align: center;
+			width: 100%
+		}
+
+		.full-width{
+			width: 100%
+		}
+
+		.full-height{
+			height: 60%
+		}
+
+		.query{
+			text-align:left; 
+			white-space: pre-wrap
+		}
+
+		.col-form-label{
+			padding-top: 15px;
+		}
+	</style>
+
+	<body>
+		<!--About section-->
+		<article id="about" class="bg-purple full-panel">
+			<h1 >ADE Detection</h1>
+			<br/>
+			<h3> Query generator</h3>
+			<br/>
+			<br/>
+			<div class="container">
+				<div class="row">
+					<div class="col-md">    
+						<h4>Model and Corpus</h4>
+						<br/>
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" 
+									id="model-dropdown" data-toggle="dropdown" 
+									aria-haspopup="true" aria-expanded="false">
+								Model
+							</button>
+							<div class="dropdown-menu" aria-labelledby="model-dropdown">
+							  <a class="dropdown-item" onclick="$('#model-dropdown').html('SPAN_BERT_CASED');">SPAN_BERT_CASED</a>
+							  <a class="dropdown-item" onclick="$('#model-dropdown').html('BIO_BERT');">BIO_BERT</a>
+							  <a class="dropdown-item" onclick="$('#model-dropdown').html('BIO_BERT_GIT');">BIO_BERT_GIT</a>
+							  <a class="dropdown-item" onclick="$('#model-dropdown').html('SCI_BERT');">SCI_BERT</a>
+							  <a class="dropdown-item" onclick="$('#model-dropdown').html('BIO_CLINICAL_BERT');">BIO_CLINICAL_BERT</a>
+							  <a class="dropdown-item" onclick="$('#model-dropdown').html('BERT_TWEET');">BERT_TWEET</a>
+							  <a class="dropdown-item" onclick="$('#model-dropdown').html('PUB_MED_BERT');">PUB_MED_BERT</a>
+							  <a class="dropdown-item" onclick="$('#model-dropdown').html('BASE_UNCASED');">BASE_UNCASED</a>
+							</div>
+						</div>  	
+						</br>       
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" 
+									id="architecture-dropdown" data-toggle="dropdown" 
+									aria-haspopup="true" aria-expanded="false">
+								Architecture
+							</button>
+							<div class="dropdown-menu" aria-labelledby="architecture-dropdown">
+							<a class="dropdown-item" onclick="$('#architecture-dropdown').html('BERT_WRAPPER');">BERT_WRAPPER</a>
+							<a class="dropdown-item" onclick="$('#architecture-dropdown').html('BERT_CRF');">BERT_CRF</a>
+							<a class="dropdown-item" onclick="$('#architecture-dropdown').html('BERT_LSTM');">BERT_LSTM</a>
+							</div>
+						</div>
+						</br> 
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" 
+									id="corpus-dropdown" data-toggle="dropdown" 
+									aria-haspopup="true" aria-expanded="false">
+								Corpus
+							</button>
+							<div class="dropdown-menu" aria-labelledby="corpus-dropdown">
+							<a class="dropdown-item" onclick="$('#corpus-dropdown').html('CADEC');">CADEC</a>
+							<a class="dropdown-item" onclick="$('#corpus-dropdown').html('TAC');">TAC</a>
+							<a class="dropdown-item" onclick="$('#corpus-dropdown').html('TWIMED_TWITTER');">TWIMED_TWITTER</a>
+							<a class="dropdown-item" onclick="$('#corpus-dropdown').html('TWIMED_PUBMED');">TWIMED_PUBMED</a>
+							<a class="dropdown-item" onclick="$('#corpus-dropdown').html('SMM4H19_TASK1');">SMM4H19_TASK1</a>
+							<a class="dropdown-item" onclick="$('#corpus-dropdown').html('SMM4H19_TASK2');">SMM4H19_TASK2</a>
+							<a class="dropdown-item" onclick="$('#corpus-dropdown').html('PSY_TAR');">PSY_TAR</a>
+							<a class="dropdown-item" onclick="$('#corpus-dropdown').html('BIO_SCOPE');">BIO_SCOPE</a>
+							</div>
+						</div>       
+						</br>  
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" 
+									id="split-folder-dropdown" data-toggle="dropdown" 
+									aria-haspopup="true" aria-expanded="false">
+								Split Folder
+							</button>
+							<div class="dropdown-menu" aria-labelledby="split-folder-dropdown">
+							<a class="dropdown-item" onclick="$('#split-folder-dropdown').html('cadec_article');">cadec_article</a>
+							<a class="dropdown-item" onclick="$('#split-folder-dropdown').html('smm4h19_task1');">smm4h19_task1</a>
+							<a class="dropdown-item" onclick="$('#split-folder-dropdown').html('smm4h19_task2');">smm4h19_task2</a>
+							<a class="dropdown-item" onclick="$('#split-folder-dropdown').html('tac');">tac</a>
+							</div>
+						</div>    	
+						</br> 	
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" 
+									id="notation-dropdown" data-toggle="dropdown" 
+									aria-haspopup="true" aria-expanded="false">
+								Notation
+							</button>
+							<div class="dropdown-menu" aria-labelledby="notation-dropdown">
+								<a class="dropdown-item" onclick="$('#notation-dropdown').html('IO');">IO</a>
+							<a class="dropdown-item" onclick="$('#notation-dropdown').html('IOB');">IOB</a>
+							<a class="dropdown-item" onclick="$('#notation-dropdown').html('BILUO');">BILUO</a>
+							</div>
+						</div>    
+						</br> 	
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" 
+									id="train-mode-dropdown" data-toggle="dropdown" 
+									aria-haspopup="true" aria-expanded="false">
+								Train Mode
+							</button>
+							<div class="dropdown-menu" aria-labelledby="train-mode-dropdown">
+							<a class="dropdown-item" onclick="$('#train-mode-dropdown').html('VALIDATION');">VALIDATION</a>
+							<a class="dropdown-item" onclick="$('#train-mode-dropdown').html('TESTING');">TESTING</a>
+							<a class="dropdown-item" onclick="$('#train-mode-dropdown').html('JUST_TESTING');">JUST_TESTING</a>
+							</div>
+						</div>    
+					</div>                           
+					<div class="col-md">
+						<h4>Tidy Modes</h4>
+						</br>
+						<div class="centered-check-box">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="1" id="merge-overlaps">
+								<label class="form-check-label" for="merge-overlaps">
+									Merge Overlaps
+								</label>
+								</br>
+								<input class="form-check-input" type="checkbox" value="2" id="merge-adjacent">
+								<label class="form-check-label" for="merge-adjacent">
+									Merge Adjacent
+								</label>
+								</br>
+								<input class="form-check-input" type="checkbox" value="3" id="solve-discontinuous">
+								<label class="form-check-label" for="solve-discontinuous">
+									Solve Discontinuous
+								</label>
+							</div>
+						</div>
+						</br>
+						<h4>Goal</h4>
+						</br>
+						<div class="row centered-check-box">
+							<div class="form-check col-sm-6">
+								<input class="form-check-input" type="checkbox" value="1" id="adr">
+								<label class="form-check-label" for="merge-overlaps">
+									ADR
+								</label>
+								</br>
+								<input class="form-check-input" type="checkbox" value="2" id="drug">
+								<label class="form-check-label" for="merge-adjacent">
+									Drug
+								</label>
+								</br>
+								<input class="form-check-input" type="checkbox" value="3" id="disease">
+								<label class="form-check-label" for="solve-discontinuous">
+									Disease
+								</label>
+							</div>
+							<div class="form-check col-sm-6">
+								<input class="form-check-input" type="checkbox" value="1" id="indication">
+								<label class="form-check-label" for="merge-overlaps">
+									Indication
+								</label>
+								</br>
+								<input class="form-check-input" type="checkbox" value="1" id="symptom">
+								<label class="form-check-label" for="merge-overlaps">
+									Symptom
+								</label>
+								</br>
+								<input class="form-check-input" type="checkbox" value="1" id="finding">
+								<label class="form-check-label" for="merge-overlaps">
+									Finding
+								</label>
+								</br>
+							</div>
+						</div>
+						</br>
+						<div class="full-width full-height">
+						</div>
+					</div>
+					<div class="col-md">
+						<h4>Train Configs</h4>
+						</br>
+						<form>
+							<div class="form-group row">
+							  	<label for="max-patience" class="col-sm-8 col-form-label">Max-Patience</label>
+							  	<div class="col-sm-4">
+									<input type="number" id="max-patience" value="5">
+								</div>
+								</br>
+								<label for="learning-rate" class="col-sm-8 col-form-label">Learning-Rate</label>
+							  	<div class="col-sm-4">
+									<input type="number" id="learning-rate" value="5e-5">
+								</div>
+								</br>
+								<label for="dropout" class="col-sm-8 col-form-label">Dropout</label>
+							  	<div class="col-sm-4">
+									<input type="number" id="dropout" value="0.2">
+								</div>
+								</br>
+								<label for="epochs" class="col-sm-8 col-form-label">Epochs</label>
+							  	<div class="col-sm-4">
+									<input type="number" id="epochs" value="80">
+								</div>
+								</br>
+								<label for="epsilon" class="col-sm-8 col-form-label">Epsilon</label>
+							  	<div class="col-sm-4">
+									<input type="number" id="epsilon" value="1e-8">
+								</div>
+								</br>
+								<label for="random-seed" class="col-sm-8 col-form-label">Random-Seed</label>
+							  	<div class="col-sm-4">
+									<input type="number" id="random-seed" value="42">
+							  	</div>
+							</div>
+						  </form>                    
+					</div>
+				</div>
+			</div>
+			</br></br></br></br></br></br></br>	
+			<button type="button" class="btn btn-primary visible" id="choose-name" onclick="chooseName()">Add to query</button>
+			<div class="form-group row invisible" id="add">
+				<div class="col-sm-1">
+				</div>
+				<label for="task-name" class="col-sm-2 col-form-label">Task Name</label>
+				<div class="col-sm-4 full-width">
+					<input type="text" id="task-name" class='full-width' value="Task Name">
+				</div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-danger full-width" onclick="back()">Back</button>
+				</div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-success full-width" onclick="addQuery()">Add to query</button>
+				</div>
+			</div>
+		</article>
+		<article>
+			<h1>Query</h1>
+		</article>
+		<article>
+			<div class="query">	
+				<span id="query">
+{}
+				</span>
+			</div>
+		</article>
+		<!--Style Libs-->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+		<script>
+			tasks = [] 
+			counter = 0
+			name = ""
+
+			chooseName = function(){
+				counter += 1
+				var today = new Date();
+				var dd = String(today.getDate()).padStart(2, '0');
+				var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+				var yyyy = today.getFullYear();
+
+				model = $('#model-dropdown').text().trim()
+				architecture = $('#architecture-dropdown').text().trim()
+				corpus = $('#corpus-dropdown').text().trim()			
+				
+				name = counter.toString() + "_" + model + "_" + architecture + '_' + corpus + '_' + dd + '.' + mm + '.' + yyyy
+				$('#task-name').attr("value", name)
+				$('#add').removeClass('invisible').addClass('visible')
+				$('#choose-name').removeClass('visible').addClass('invisible')
+			}
+
+			addQuery = function(){
+				merge_overlaps = $('#merge-overlaps').prop('checked')
+				merge_adjacent = $('#merge-adjacent').prop('checked')
+				solve_discontinuous = $('#solve-discontinuous').prop('checked')
+
+				adr = $('#adr').prop('checked')
+				drug = $('#drug').prop('checked')
+				disease = $('#disease').prop('checked')
+				indication = $('#indication').prop('checked')
+				symptom = $('#symptom').prop('checked')
+				finding = $('#finding').prop('checked')
+
+				$('#choose-name').removeClass('invisible').addClass('visible')
+				$('#add').removeClass('visible').addClass('invisible')
+				
+				train_config = {
+					max_patience : $('#max-patience')[0].value,
+					learning_rate : $('#learning-rate')[0].value,
+					dropout : $('#dropout')[0].value,
+					epochs : $('#epochs')[0].value,
+					epsilon : $('#epsilon')[0].value,
+					random_seed : $('#random-seed')[0].value
+				}
+
+				task = {
+					id : name,
+					split_folder : $('#split-folder-dropdown').text().trim(),
+        			corpus : $('#corpus-dropdown').text().trim(),
+        			notation : $('#notation-dropdown').text().trim(),
+        			model : $('#model-dropdown').text().trim(),
+        			architecture : $('#architecture-dropdown').text().trim(),
+					train_mode: $('#train-mode-dropdown').text().trim(),
+					train_config: train_config,
+					tidy_modes: [],
+					goal: []
+				}
+
+				if(merge_overlaps){
+					task.tidy_modes.push("MERGE_OVERLAPS")
+				}
+				if(merge_adjacent){
+					task.tidy_modes.push("MERGE_ADJACENT")
+				}
+				if(solve_discontinuous){
+					task.tidy_modes.push("SOLVE_DISCONTINUOUS")
+				} 
+
+				if(adr){
+					task.goal.push("ADR")
+				} 
+				if(drug){
+					task.goal.push("Drug")
+				} 
+				if(disease){
+					task.goal.push("Disease")
+				} 
+				if(indication){
+					task.goal.push("Indication")
+				} 
+				if(symptom){
+					task.goal.push("Symptom")
+				} 
+				if(finding){
+					task.goal.push("Finding")
+				} 
+
+				tasks.push(task)
+				$('#query').html('\n' + JSON.stringify(tasks, undefined, 4).trim())
+			}
+
+			back = function(){
+				counter -= 1
+				$('#choose-name').removeClass('invisible').addClass('visible')
+				$('#add').removeClass('visible').addClass('invisible')
+			}
+		</script>
+	</body>
+</html>

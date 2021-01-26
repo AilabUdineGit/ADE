@@ -1,0 +1,17 @@
+pandas
+numpy
+spacy
+tqdm
+tweepy
+argparse
+python-dotenv
+torch
+transformers
+pytorch-crf
+sklearn
+python-telegram-bot
+psutil
+plotly
+nltk
+SQLAlchemy
+shutil

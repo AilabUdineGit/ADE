@@ -1,0 +1,11 @@
+!assets/models/dirkson/
+.ipynb_checkpoints/
+assets/models/*
+weights.txt
+__pycache__
+.vscode/
+*.pt
+*.ini
+.bin
+tmp/
+env/
