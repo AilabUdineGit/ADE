@@ -1,4 +1,10 @@
-# ADE_Detection
+# Models for ADE Detection
+
+This repository contains the code related to paper
+
+Beatrice Portelli, Edoardo Lenzi, Emmanuele Chersoni, Giuseppe Serra, Enrico Santus. 2021.
+**BERT Prescriptions to Avoid Unwanted Headaches: A Comparison of Transformer Architectures for Adverse Drug Event Detection**.
+In *EACL 2021*.
 
 
 ## Datasets
