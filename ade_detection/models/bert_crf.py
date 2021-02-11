@@ -33,7 +33,7 @@ class Bert_CRF(BertPreTrainedModel):
         output = None
         
         if labels is not None:
-            loss = -self.crf(logits, labels, mask=attention_mask, reduction='mean')
+            loss = -self.crf(logits, labels, mask=attention_mask, reduction='token_mean')
             output = loss
         
         pred_list = self.crf.decode(logits, mask=attention_mask)
