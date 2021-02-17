@@ -3,11 +3,11 @@
 This repository contains the code related to the following papers:
 
 Beatrice Portelli, Edoardo Lenzi, Emmanuele Chersoni, Giuseppe Serra and Enrico Santus. (2021).
-**BERT Prescriptions to Avoid Unwanted Headaches: A Comparison of Transformer Architectures for Adverse Drug Event Detection**.
+[**BERT Prescriptions to Avoid Unwanted Headaches: A Comparison of Transformer Architectures for Adverse Drug Event Detection**](http://ailab.uniud.it/wp-content/uploads/2021/01/bert_presctiptions.pdf).
 *Proceedings of the 16th conference of the European Chapter of the Association for Computational Linguistics (EACL 2021)*.
 
 Beatrice Portelli, Daniele Passabì, Edoardo Lenzi, Giuseppe Serra, Enrico Santus and Emmanuele Chersoni. (2021).
-**Improving Adverse Drug Event Extraction with SpanBERT on Different Text Typologies**.
+[**Improving Adverse Drug Event Extraction with SpanBERT on Different Text Typologies**](http://ailab.uniud.it/wp-content/uploads/2021/02/Improving-ADE-Extraction-with-SpanBERT.pdf).
 *Proceedings of the 5th International Workshop on Health Intelligence (W3PHIAI 2021)*.
 
 ## Datasets
